@@ -9,7 +9,7 @@ const schema = new Schema(MODEL, {
   timestamps: true
 })
 
-schema.pre('save', async (next) => {
+schema.pre('save', async function (next) {
   const passwordHasModified = this.isModified('password')
   if (!passwordHasModified) {
     next()
@@ -22,9 +22,9 @@ schema.pre('save', async (next) => {
   next()
 })
 
-schema.methods.comparePassword = (candidatePassword) => (
-  compareSync(candidatePassword, this.password)
-)
+schema.methods.comparePassword = function (candidatePassword) {
+  return compareSync(candidatePassword, this.password)
+}
 
 const SCHEMA = model(name, schema, name)
 

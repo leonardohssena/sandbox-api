@@ -1,17 +1,21 @@
 import { Router } from 'express'
 
+import Functions from '../support/functions'
+
+import { filter } from '../../../middleware'
+import { base } from '../pipeline'
+
 const Routes = Router()
   .get(
     '/',
-    (req, res, next) => {
-      try {
-        res.status(200).send({ message: 'Sucesso' })
-      } catch (err) {
-        res.status(409).send({ message: 'Error' })
-      } finally {
-        next()
-      }
-    }
+    filter({
+      name: 'string',
+      email: 'string',
+      username: 'string',
+      status: 'array'
+    }),
+    base,
+    Functions.get
   )
   .get(
     '/paginate',
@@ -51,15 +55,7 @@ const Routes = Router()
   )
   .post(
     '/',
-    (req, res, next) => {
-      try {
-        res.status(200).send({ message: 'Sucesso' })
-      } catch (err) {
-        res.status(409).send({ message: 'Error' })
-      } finally {
-        next()
-      }
-    }
+    Functions.post
   )
   .patch(
     '/',

@@ -8,11 +8,13 @@ import passport from 'passport'
 import {
   decoder,
   unauthorized,
-  jwt
+  jwt,
+  sort
 } from './middleware'
 
 import initDatabase from './initDatabase'
 import initRoutes from './initRoutes'
+import pipeline from './middleware/pipeline'
 
 const app = express()
 const PORT = process.env.PORT || 3000
@@ -31,6 +33,8 @@ app.use(helmet())
 
 app.use(decoder)
 app.use(jwt)
+app.use(pipeline)
+app.use(sort)
 
 initDatabase()
 initRoutes(app)

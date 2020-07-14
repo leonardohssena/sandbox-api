@@ -15,8 +15,19 @@ module.exports = {
       'error',
       'never'
     ],
+    'array-bracket-spacing': [
+      'error',
+      'always'
+    ],
+    'no-unused-vars':
+    [
+      'error',
+      { argsIgnorePattern: '_' }
+    ],
     'comma-dangle': 0,
     'no-console': 0,
-    'no-underscore-dangle': 0
+    'no-underscore-dangle': 0,
+    'func-names': 0,
+    'import/prefer-default-export': 0
   },
 }
