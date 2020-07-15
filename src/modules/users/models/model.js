@@ -1,3 +1,5 @@
+import { unFormat } from '../../../support/utils'
+
 export default {
   name: {
     type: String,
@@ -14,8 +16,14 @@ export default {
     type: String,
     unique: true,
     required: true,
+    trim: true
+  },
+  phone: {
+    type: String,
+    unique: true,
+    required: true,
     trim: true,
-    index: true
+    set: unFormat
   },
   forgotPassword: {
     code: String,
@@ -28,7 +36,7 @@ export default {
   },
   status: {
     type: String,
-    enum: ['active', 'inactive', 'deleted'],
+    enum: [ 'active', 'inactive', 'deleted' ],
     default: 'active'
   }
 }

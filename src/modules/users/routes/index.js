@@ -12,6 +12,7 @@ const Routes = Router()
       name: 'string',
       email: 'string',
       username: 'string',
+      phone: 'string',
       status: 'array'
     }),
     base,
